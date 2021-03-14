@@ -1,0 +1,23 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ '/assets/css/bootstrap.css' | relative_url }}" rel="stylesheet">
+    <link href="{{ '/assets/css/app.css' | relative_url }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+
+    <!-- FAVICON -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="//img.sigma-division.com/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="//img.sigma-division.com/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="//img.sigma-division.com/favicon-16x16.png">
+    <link rel="shortcut icon" href="//img.sigma-division.com/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="//img.sigma-division.com/favicon.ico" type="image/x-icon">
+		<link rel="manifest" href="//img.sigma-division.com/site.webmanifest"> -->
+
+    <title>{% if page.title %}{{ site.title }} :: {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  </head>

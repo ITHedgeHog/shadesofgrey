@@ -1,0 +1,10 @@
+---
+- name: USS Gremlin
+  registry: NCC-77244
+  section: Rapid Response
+  class: Sovereign
+  crew:
+    - character: curtisvamush
+      position: Commanding Officer
+      fdisplay: true
+    

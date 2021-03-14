@@ -1,0 +1,73 @@
+#homeHero {
+    margin-top: 56px;
+    height: 60vh !important;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/assets/img/sovereign_class.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#homeHero h1 {
+    font-family: 'Permanent Marker', cursive;
+    transform: rotate(-9deg);
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+    #homeHero {
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/assets/img/sovereign_class.jpg) no-repeat 50% 50%;
+        background-size: cover;
+	    overflow-y:scroll;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    #homeHero h1 {
+        font-size: 2rem;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    #homeHero h1 {
+        font-size: 3rem;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    #homeHero h1 {
+        font-size: 4rem;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    #homeHero h1 {
+        font-size: 5rem;
+    }
+  }
+  
+
+#homeHero p {
+    text-transform: uppercase;
+}
+
+#pageHero {
+    margin-top: 56px;
+    height: 8rem;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/assets/img/sovereign_class.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#pageHero h1 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.footer {
+    font-size: x-small;
+}
+
+.bg-lightgrey {
+    background: rgba(0, 0, 0, 0.03);
+}

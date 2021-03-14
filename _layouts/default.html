@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+    {% include head.html %}
+    <body class="d-flex flex-column h-100">
+        {% include header.html %}
+        <main class="flex-shrink-0">
+            <div class="d-flex p-3 mx-auto flex-column justify-content-center align-items-center text-white bg-dark" id="pageHero">
+                <h1>{{ page.title }}</h1>
+            </div>
+            {{ content }}
+        </main>
+        {% include footer.html %}
+    </body>
+</html>

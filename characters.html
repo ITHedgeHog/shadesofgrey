@@ -1,0 +1,115 @@
+---
+layout: default
+title: Dramatis personae
+permalink: /characters/
+mainmenu: true
+---
+<div class="container py-3">
+    <div class="row">
+        <div class="col">
+            <h1>Dramatis personae</h1>
+            <p>The cast of the USS Gremlin and Sigma Division Metaverse.</p>
+        </div>
+    </div>
+    {% for ship in site.data.fleet %}
+    {% if ship.crew != nil %}
+    <div class="row mt-2">
+        <div class="col">
+            <h2>{{ ship.name }}</h2>
+        </div>
+    </div>
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7 g-4">
+        {% for crew in ship.crew %}
+        {% assign character = site.pages | find: "bioslug", crew.character %}
+        <div class="col">
+            <div class="card h-100 text-center">
+                {% if character.avatar %}
+                <img src="/assets/img/characters/{{ character.avatar }}" alt="{{ character.title }} Avatar" class="card-img-top">
+                {% else %}
+                <img src="/assets/img/characters/blank_profile.png" alt="Blank Character Avatar" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ character.title }}</h5>
+                    {% if character.rankimg %}
+                    <p class="card-text">
+                        <img src="//img.sigma-division.com/ranks/{{ character.rankimg }}" alt="{{ character.ranktitle }} Insignia" class="img-fluid" width="140">
+                        <br>
+                        <small>
+                            <em>
+                                {{ character.ranktitle }}
+                            </em>
+                        </small>
+                    </p>
+                    {% endif %}
+                    {% if character.biodisplay != false %}
+                    <p class="card-text"><a href="{{ character.bioslug }}/" class="btn btn-primary">Biography</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="row mt-2">
+        <div class="col">
+            <h2>Other Characters</h2>
+        </div>
+    </div>
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7 g-4">
+        {% assign characters = site.pages | where_exp: "item", "item.bioslug != nil" %}
+        {% assign no_unassigned_characters = true %}
+
+        {% for character in characters %}
+            {% assign character_assigned = false %}
+            {% comment %}
+                loop to find unassigned character, break looking if the character becomes assigned
+            {% endcomment %}
+            {% if character_assigned == false %}
+            {% for simm in site.data.fleet %}
+                {% for crew_member in simm.crew %}
+                    {% if crew_member.character == character.bioslug %}
+                        {% assign character_assigned = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            {% endif %}
+
+            {% comment %}
+                if after running across the simms in site.data.fleet the crew isn't assigned, display here
+            {% endcomment %}
+            
+            {% if character_assigned == false %}
+            {% assign no_unassigned_characters = false %}
+            <div class="col">
+                <div class="card h-100 text-center">
+                    {% if character.avatar %}
+                    <img src="//img.sigma-division.com/characters/{{ character.avatar }}" alt="{{ character.title }} Avatar" class="card-img-top">
+                    {% else %}
+                    <img src="//img.sigma-division.com/characters/blank_profile.png" alt="Blank Character Avatar" class="card-img-top">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ character.title }}</h5>
+                        {% if character.rankimg %}
+                        <p class="card-text">
+                            <img src="//img.sigma-division.com/ranks/{{ character.rankimg }}" alt="{{ character.ranktitle }} Insignia" class="img-fluid" width="140">
+                            <br>
+                            <small>
+                                <em>
+                                    {{ character.ranktitle }}
+                                </em>
+                            </small>
+                        </p>
+                        {% endif %}
+                        {% if character.biodisplay != false %}
+                        <p class="card-text"><a href="{{ character.bioslug }}/" class="btn btn-primary">Biography</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% if no_unassigned_characters == true %}
+        <span class="w-100"><em>There are no other characters at this stage.</em></span>
+        {% endif %}
+    </div>
